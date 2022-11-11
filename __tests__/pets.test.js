@@ -74,6 +74,15 @@ describe('pets routes', () => {
     });
   });
 
+  it('PUT /pets/:id should update an existing pet', async () => {
+    const resp = await request(app).put('/pets/1').send({
+      color: 'green',
+    });
+    console.log(resp.body);
+    expect(resp.status).toBe(200);
+    expect(resp.body.color).toBe('green');
+  });
+
   afterAll(() => {
     pool.end();
   });
