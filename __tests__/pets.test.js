@@ -78,11 +78,17 @@ describe('pets routes', () => {
     const resp = await request(app).put('/pets/1').send({
       color: 'green',
     });
-    console.log(resp.body);
     expect(resp.status).toBe(200);
     expect(resp.body.color).toBe('green');
   });
 
+  it('DELETE /pets/:id should delete a pet', async () => {
+    const resp = await request(app).delete('/pets/2');
+    expect(resp.status).toBe(200);
+
+    const petResp = await request(app).get('/pets/2');
+    expect(petResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
