@@ -8,7 +8,7 @@ describe('pets routes', () => {
     return setup(pool);
   });
 
-  it.skip('GET /pets should return a list of pets', async () => {
+  it('GET /pets should return a list of pets', async () => {
     const resp = await request(app).get('/pets');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -58,6 +58,20 @@ describe('pets routes', () => {
         "type": "cat",
       }
     `);
+  });
+
+  it('POST /pets should create a new pet', async () => {
+    const newPet = {
+      name: 'Big Daddy',
+      type: 'dog',
+      color: 'brown',
+    };
+    const resp = await request(app).post('/pets').send(newPet);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newPet,
+    });
   });
 
   afterAll(() => {
