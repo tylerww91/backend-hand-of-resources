@@ -73,6 +73,14 @@ describe('heroes routes', () => {
       ...newHero,
     });
   });
+
+  it('PUT /heroes/1 should update a hero', async () => {
+    const resp = await request(app).put('/heroes/1').send({
+      role: 'ganker',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.role).toBe('ganker');
+  });
   afterAll(() => {
     pool.end();
   });

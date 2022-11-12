@@ -74,7 +74,7 @@ describe('pets routes', () => {
     });
   });
 
-  it.skip('PUT /pets/:id should update an existing pet', async () => {
+  it.skip('PUT /pets/1 should update an existing pet', async () => {
     const resp = await request(app).put('/pets/1').send({
       color: 'green',
     });
