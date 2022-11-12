@@ -81,6 +81,14 @@ describe('heroes routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.role).toBe('ganker');
   });
+
+  it('DELETE /heroes/1 should delete a hero', async () => {
+    const resp = await request(app).delete('/heroes/2');
+    expect(resp.status).toBe(200);
+
+    const heroResp = await request(app).get('/heroes/2');
+    expect(heroResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
