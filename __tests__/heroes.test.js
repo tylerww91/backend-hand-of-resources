@@ -59,6 +59,20 @@ describe('heroes routes', () => {
       }
     `);
   });
+
+  it('POST /heroes should create a new hero', async () => {
+    const newHero = {
+      name: 'Clinkz',
+      role: 'carry',
+      attribute: 'agility',
+    };
+    const resp = await request(app).post('/heroes').send(newHero);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newHero,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
