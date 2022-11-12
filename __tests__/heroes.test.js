@@ -46,6 +46,19 @@ describe('heroes routes', () => {
       ]
     `);
   });
+
+  it('GET /heroes/:id should return an individual hero', async () => {
+    const resp = await request(app).get('/heroes/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "attribute": "intelligence",
+        "id": "1",
+        "name": "Zeus",
+        "role": "carry",
+      }
+    `);
+  });
   afterAll(() => {
     pool.end();
   });
