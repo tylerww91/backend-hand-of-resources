@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS pets;
 DROP TABLE IF EXISTS heroes;
+DROP TABLE IF EXISTS teams;
 
 
 CREATE TABLE pets (
@@ -43,3 +44,23 @@ VALUES
 ('Witch Doctor', 'support', 'intelligence'),
 ('Shadow Fiend', 'carry', 'agility'),
 ('Snapfire', 'support', 'strength');
+
+CREATE TABLE teams (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    city VARCHAR NOT NULL,
+    mascot VARCHAR NOT NULL
+);
+
+INSERT INTO teams(
+    name,
+    city,
+    mascot
+)
+
+VALUES
+('Spurs', 'San Antonio', 'The Coyote'),
+('Timberwolves', 'Minneapolis', 'Crunch the Wolf'),
+('Celtics', 'Boston', 'Lucky the Leprechaun'),
+('Blazers', 'Portland', 'Blaze the Trail Cat'),
+('Bulls', 'Chicago', 'Benny the Bull');
