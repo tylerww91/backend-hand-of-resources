@@ -71,7 +71,7 @@ describe('songs routes', () => {
     `);
   });
 
-  it('GET /songs/1 should return an individual song', async () => {
+  it.skip('GET /songs/1 should return an individual song', async () => {
     const resp = await request(app).get('/songs/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -83,4 +83,20 @@ describe('songs routes', () => {
       }
     `);
   });
+
+  it('POST /songs should create a new song', async () => {
+    const newSong = {
+      title: 'FRONTAL LOBE MUZIK',
+      artist: 'Daniel Caesar',
+      genre: 'R&B/Soul',
+    };
+    const resp = await request(app).post('/songs').send(newSong);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newSong,
+    });
+  });
+
+  it('PUT /songs/1');
 });
