@@ -84,7 +84,7 @@ describe('songs routes', () => {
     `);
   });
 
-  it('POST /songs should create a new song', async () => {
+  it.skip('POST /songs should create a new song', async () => {
     const newSong = {
       title: 'FRONTAL LOBE MUZIK',
       artist: 'Daniel Caesar',
@@ -98,5 +98,11 @@ describe('songs routes', () => {
     });
   });
 
-  it('PUT /songs/1');
+  it('PUT /songs/3 should update an existing song', async () => {
+    const resp = await request(app).put('/songs/3').send({
+      title: 'Diablo',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.title).toEqual('Diablo');
+  });
 });
