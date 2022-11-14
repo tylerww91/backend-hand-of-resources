@@ -68,13 +68,13 @@ VALUES
 
 CREATE TABLE songs (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name VARCHAR NOT NULL,
+    title VARCHAR NOT NULL,
     artist VARCHAR NOT NULL,
     genre VARCHAR NOT NULL
 );
 
 INSERT INTO songs(
-    name,
+    title,
     artist,
     genre
 )
