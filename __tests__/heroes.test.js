@@ -8,7 +8,7 @@ describe('heroes routes', () => {
     return setup(pool);
   });
 
-  it('GET /heroes should return list of heroes', async () => {
+  it.skip('GET /heroes should return list of heroes', async () => {
     const resp = await request(app).get('/heroes');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -47,7 +47,7 @@ describe('heroes routes', () => {
     `);
   });
 
-  it('GET /heroes/:id should return an individual hero', async () => {
+  it.skip('GET /heroes/:id should return an individual hero', async () => {
     const resp = await request(app).get('/heroes/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -60,7 +60,7 @@ describe('heroes routes', () => {
     `);
   });
 
-  it('POST /heroes should create a new hero', async () => {
+  it.skip('POST /heroes should create a new hero', async () => {
     const newHero = {
       name: 'Clinkz',
       role: 'carry',
@@ -74,7 +74,7 @@ describe('heroes routes', () => {
     });
   });
 
-  it('PUT /heroes/1 should update a hero', async () => {
+  it.skip('PUT /heroes/1 should update a hero', async () => {
     const resp = await request(app).put('/heroes/1').send({
       role: 'ganker',
     });
@@ -82,7 +82,7 @@ describe('heroes routes', () => {
     expect(resp.body.role).toBe('ganker');
   });
 
-  it('DELETE /heroes/1 should delete a hero', async () => {
+  it.skip('DELETE /heroes/1 should delete a hero', async () => {
     const resp = await request(app).delete('/heroes/2');
     expect(resp.status).toBe(200);
 
