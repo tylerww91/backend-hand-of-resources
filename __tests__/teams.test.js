@@ -47,7 +47,7 @@ describe('teams routes', () => {
     `);
   });
 
-  it('GET /teams/1 should return an individual team', async () => {
+  it.skip('GET /teams/1 should return an individual team', async () => {
     const resp = await request(app).get('/teams/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -58,5 +58,19 @@ describe('teams routes', () => {
         "name": "Spurs",
       }
     `);
+  });
+
+  it('POST /teams should create a team', async () => {
+    const newTeam = {
+      name: 'Kings',
+      city: 'Sacramento',
+      mascot: 'Slamson the Lion',
+    };
+    const resp = await request(app).post('/teams').send(newTeam);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newTeam,
+    });
   });
 });
