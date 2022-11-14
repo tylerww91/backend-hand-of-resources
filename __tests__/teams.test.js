@@ -74,11 +74,19 @@ describe('teams routes', () => {
     });
   });
 
-  it('PUT /teams should update an existing team', async () => {
+  it.skip('PUT /teams/2 should update an existing team', async () => {
     const resp = await request(app).put('/teams/2').send({
       city: 'Minnesota',
     });
     expect(resp.status).toBe(200);
     expect(resp.body.city).toBe('Minnesota');
+  });
+
+  it('DELETE /teams/1 should delete an existing team', async () => {
+    const resp = await request(app).delete('/teams/1');
+    expect(resp.status).toBe(200);
+
+    const teamResp = await request(app).get('/teams/1');
+    expect(teamResp.status).toBe(404);
   });
 });
