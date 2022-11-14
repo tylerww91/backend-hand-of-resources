@@ -60,7 +60,7 @@ describe('teams routes', () => {
     `);
   });
 
-  it('POST /teams should create a team', async () => {
+  it.skip('POST /teams should create a team', async () => {
     const newTeam = {
       name: 'Kings',
       city: 'Sacramento',
@@ -72,5 +72,13 @@ describe('teams routes', () => {
       id: expect.any(String),
       ...newTeam,
     });
+  });
+
+  it('PUT /teams should update an existing team', async () => {
+    const resp = await request(app).put('/teams/2').send({
+      city: 'Minnesota',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.city).toBe('Minnesota');
   });
 });
