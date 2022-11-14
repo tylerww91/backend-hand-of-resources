@@ -82,7 +82,7 @@ describe('teams routes', () => {
     expect(resp.body.city).toBe('Minnesota');
   });
 
-  it('DELETE /teams/1 should delete an existing team', async () => {
+  it.skip('DELETE /teams/1 should delete an existing team', async () => {
     const resp = await request(app).delete('/teams/1');
     expect(resp.status).toBe(200);
 

@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS pets;
 DROP TABLE IF EXISTS heroes;
 DROP TABLE IF EXISTS teams;
+DROP TABLE IF EXISTS songs;
 
 
 CREATE TABLE pets (
@@ -64,3 +65,29 @@ VALUES
 ('Celtics', 'Boston', 'Lucky the Leprechaun'),
 ('Blazers', 'Portland', 'Blaze the Trail Cat'),
 ('Bulls', 'Chicago', 'Benny the Bull');
+
+CREATE TABLE songs (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    artist VARCHAR NOT NULL,
+    genre VARCHAR NOT NULL
+);
+
+INSERT INTO songs(
+    name,
+    artist,
+    genre
+)
+
+VALUES
+('No Scrubs', 'TLC', 'R&B/Soul'),
+('Special Affair', 'The Internet', 'R&B/Soul'),
+('Small Worlds', 'Mac Miller', 'Hip-Hop/Rap'),
+('My Own Thang', 'Walker & Royce', 'Dance/Electronic'),
+('Cocoa Butter Kisses', 'Chance the Rapper', 'Hip-Hop/Rap'),
+('my.life', 'J. Cole', 'Hip-Hop/Rap'),
+('ARE YOU WITH THAT?', 'Vince Staples', 'Hip-Hop/Rap'),
+('My Love', 'Route 94', 'Dance/Electronic'),
+('January', 'Disclosure', 'Dance/Electronic');
+
+
