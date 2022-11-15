@@ -83,4 +83,12 @@ describe('players routes', () => {
       ...newPlayer,
     });
   });
+
+  it('PUT /players/7 should update an individual player', async () => {
+    const resp = await request(app).put('/players/7').send({
+      position: 'SF',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.position).toEqual('SF');
+  });
 });
