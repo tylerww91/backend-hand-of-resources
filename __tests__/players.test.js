@@ -69,4 +69,18 @@ describe('players routes', () => {
     const resp = await request(app).get('/players/1');
     expect(resp.status).toBe(200);
   });
+
+  it('POST /players should create a new player', async () => {
+    const newPlayer = {
+      name: 'Nikola Jokic',
+      team: 'Nuggets',
+      position: 'C',
+    };
+    const resp = await request(app).post('/players').send(newPlayer);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newPlayer,
+    });
+  });
 });
