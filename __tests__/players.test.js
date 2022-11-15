@@ -91,4 +91,12 @@ describe('players routes', () => {
     expect(resp.status).toBe(200);
     expect(resp.body.position).toEqual('SF');
   });
+
+  it('DELETE /players/3 should delete an individual player', async () => {
+    const resp = await request(app).delete('/players/3');
+    expect(resp.status).toBe(200);
+
+    const playerResp = await request(app).get('/players/3');
+    expect(playerResp.status).toBe(404);
+  });
 });
