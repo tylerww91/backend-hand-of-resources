@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS pets;
 DROP TABLE IF EXISTS heroes;
 DROP TABLE IF EXISTS teams;
 DROP TABLE IF EXISTS songs;
+DROP TABLE IF EXISTS players;
 
 
 CREATE TABLE pets (
@@ -90,4 +91,25 @@ VALUES
 ('My Love', 'Route 94', 'Dance/Electronic'),
 ('January', 'Disclosure', 'Dance/Electronic');
 
+CREATE TABLE players (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    team VARCHAR NOT NULL,
+    position VARCHAR NOT NULL
+);
 
+INSERT INTO players(
+    name,
+    team,
+    position
+)
+
+VALUES
+('Stephen Curry', 'Warriors', 'PG'),
+('Ja Morant', 'Grizzlies', 'PG'),
+('Evan Mobley', 'Caveliers', 'PF'),
+('Damian Lillard', 'Blazers', 'PG'),
+('Luka Doncic', 'Mavericks', 'PG'),
+('Joel Embiid', '76ers', 'C'),
+('Lebron James', 'Lakers', 'PF'),
+('Kawhi Leonard', 'Clippers', 'SF');
