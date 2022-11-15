@@ -68,6 +68,14 @@ describe('players routes', () => {
   it('GET /players/1 should return an individual player', async () => {
     const resp = await request(app).get('/players/1');
     expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "1",
+        "name": "Stephen Curry",
+        "position": "PG",
+        "team": "Warriors",
+      }
+    `);
   });
 
   it('POST /players should create a new player', async () => {
@@ -98,5 +106,8 @@ describe('players routes', () => {
 
     const playerResp = await request(app).get('/players/3');
     expect(playerResp.status).toBe(404);
+  });
+  afterAll(() => {
+    pool.end();
   });
 });

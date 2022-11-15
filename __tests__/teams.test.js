@@ -8,7 +8,7 @@ describe('teams routes', () => {
     return setup(pool);
   });
 
-  it.skip('GET /teams should return all teams', async () => {
+  it('GET /teams should return all teams', async () => {
     const resp = await request(app).get('/teams');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -47,7 +47,7 @@ describe('teams routes', () => {
     `);
   });
 
-  it.skip('GET /teams/1 should return an individual team', async () => {
+  it('GET /teams/1 should return an individual team', async () => {
     const resp = await request(app).get('/teams/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -60,7 +60,7 @@ describe('teams routes', () => {
     `);
   });
 
-  it.skip('POST /teams should create a team', async () => {
+  it('POST /teams should create a team', async () => {
     const newTeam = {
       name: 'Kings',
       city: 'Sacramento',
@@ -74,7 +74,7 @@ describe('teams routes', () => {
     });
   });
 
-  it.skip('PUT /teams/2 should update an existing team', async () => {
+  it('PUT /teams/2 should update an existing team', async () => {
     const resp = await request(app).put('/teams/2').send({
       city: 'Minnesota',
     });
@@ -82,11 +82,14 @@ describe('teams routes', () => {
     expect(resp.body.city).toBe('Minnesota');
   });
 
-  it.skip('DELETE /teams/1 should delete an existing team', async () => {
+  it('DELETE /teams/1 should delete an existing team', async () => {
     const resp = await request(app).delete('/teams/1');
     expect(resp.status).toBe(200);
 
     const teamResp = await request(app).get('/teams/1');
     expect(teamResp.status).toBe(404);
+  });
+  afterAll(() => {
+    pool.end();
   });
 });
