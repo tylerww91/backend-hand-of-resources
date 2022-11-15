@@ -64,4 +64,9 @@ describe('players routes', () => {
       ]
     `);
   });
+
+  it('GET /players/1 should return an individual player', async () => {
+    const resp = await request(app).get('/players/1');
+    expect(resp.status).toBe(200);
+  });
 });
